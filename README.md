@@ -2,5 +2,5 @@
 
 ## Concept
 
-Jumping on the #winterarc challenge - this is a simple application to help set and track
+Jumping on the #winterarc challenge bandwagon - this is a simple application to help set and track
 goals
