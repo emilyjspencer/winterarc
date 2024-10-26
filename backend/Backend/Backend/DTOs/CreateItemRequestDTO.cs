@@ -11,5 +11,6 @@
         public DateTime PublishedDate { get; set; }
 
         public Boolean IsVisible { get; set; }
+        public string Status { get; set; }
     }
 }

@@ -13,5 +13,6 @@
 
         public Boolean IsVisible { get; set; }
 
+        public string Status { get; set; }
     }
 }

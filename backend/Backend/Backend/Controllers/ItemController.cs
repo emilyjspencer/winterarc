@@ -33,7 +33,8 @@ namespace Backend.Controllers
                     Caption = request.Caption,
                     Content = request.Content,
                     IsVisible = request.IsVisible,
-                    PublishedDate = request.PublishedDate
+                    PublishedDate = request.PublishedDate,
+                    Status = request.Status
 
                 };
 
