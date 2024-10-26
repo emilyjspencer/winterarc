@@ -25,3 +25,9 @@ goals
 * SCSS
 * RxJS
 * Jest
+* Chart.Js or ngx-charts - to visualize data
+* AWS?
+* Docker
+* Cypress
+
+Future iterations might utilization authentication and microservices.
