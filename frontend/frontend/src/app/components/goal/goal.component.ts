@@ -18,8 +18,8 @@ export class GoalComponent {
     constructor(private itemService: GoalService, private router: Router) {
       this.goal = {
         name: '',
-        content: '',
         description: '',
+        content: '',
         publishedDate: new Date(),
         status: ''
       }

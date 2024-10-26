@@ -14,6 +14,7 @@ export class GoalService {
   apiBaseUrl: string = "https://localhost:7078";
 
   createGoal(data: AddGoal): Observable<GoalComponent> {
-    return this.http.post<GoalComponent>(this.apiBaseUrl + '/api/goals', data)
+    return this.http.post<GoalComponent>('https://localhost:7078/api/Goal', data)
   }
+  
 }

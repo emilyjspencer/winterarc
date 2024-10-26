@@ -15,6 +15,6 @@ export class ItemService {
   apiBaseUrl: string = "https://localhost:7078";
 
   createItem(data: AddItem): Observable<ItemComponent> {
-    return this.http.post<ItemComponent>(this.apiBaseUrl + '/api/items', data)
+    return this.http.post<ItemComponent>(this.apiBaseUrl + '/api/Item', data)
   }
 }
