@@ -14,5 +14,7 @@
         public Boolean IsVisible { get; set; }
 
         public string Status { get; set; }
+
+        public ICollection<Category> Categories { get; set; }
     }
 }

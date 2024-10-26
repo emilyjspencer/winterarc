@@ -13,5 +13,7 @@
         public DateTime PublishedDate { get; set; }
 
         public string Status { get; set; }
+
+        public Guid[] Categories { get; set; }
     }
 }

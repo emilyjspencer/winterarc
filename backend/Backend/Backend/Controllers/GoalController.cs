@@ -13,13 +13,13 @@ namespace Backend.Controllers
         public class GoalController : ControllerBase
         {
             private readonly IGoalRepository goalRepository;
+        private readonly ICategoryRepository categoryRepository;
 
-
-            public GoalController(IGoalRepository goalRepository)
+        public GoalController(IGoalRepository goalRepository)
             {
                 this.goalRepository = goalRepository;
-
-            }
+                this.categoryRepository = categoryRepository;;
+    }
 
             [HttpPost]
             public async Task<IActionResult> CreateGoal([FromBody] CreateGoalRequestDTO request)
@@ -33,9 +33,17 @@ namespace Backend.Controllers
                     Content = request.Content,
                     PublishedDate = request.PublishedDate,
                     Status = request.Status
-
+                    Categories = new List<Category>()
                 };
-            
+
+            foreach (var categoryGuid in request.Categories)
+            {
+                var existingCategory = await categoryRepository.GetById(categoryGuid);
+                if (existingCategory is not null)
+                {
+                    goal.Categories.Add(existingCategory);
+                }
+            }
             goal = await goalRepository.CreateAsync(goal);
 
             var response = new Goal
@@ -45,7 +53,12 @@ namespace Backend.Controllers
                 Description = request.Description,
                 Content = request.Content,
                 PublishedDate = request.PublishedDate,
-                Status = request.Status
+                Status = request.Status,
+                Categories = (ICollection<Category>)goal.Categories.Select(x => new CategoryDTO
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                }).ToList()
             };
 
                 return Ok(response);

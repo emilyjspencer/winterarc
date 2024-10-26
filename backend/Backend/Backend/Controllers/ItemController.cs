@@ -1,5 +1,6 @@
 ﻿using Backend.DTOs;
 using Backend.Models;
+using Backend.Repositories.Concrete;
 using Backend.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,11 +15,13 @@ namespace Backend.Controllers
         public class ItemController : ControllerBase
         {
             private readonly IItemRepository itemRepository;
+        private readonly ICategoryRepository categoryRepository;
 
 
-            public ItemController(IItemRepository itemRepository)
+        public ItemController(IItemRepository itemRepository, ICategoryRepository categoryRepository)
             {
                 this.itemRepository = itemRepository;
+            this.categoryRepository = categoryRepository;
 
             }
 
@@ -34,12 +37,19 @@ namespace Backend.Controllers
                     Content = request.Content,
                     IsVisible = request.IsVisible,
                     PublishedDate = request.PublishedDate,
-                    Status = request.Status
-
+                    Status = request.Status,
+                    Categories = new List<Category>()
                 };
 
-
-                item = await itemRepository.CreateAsync(item);
+            foreach (var categoryGuid in request.Categories)
+            {
+                var existingCategory = await categoryRepository.GetById(categoryGuid);
+                if (existingCategory is not null)
+                {
+                    item.Categories.Add(existingCategory);
+                }
+            }
+            item = await itemRepository.CreateAsync(item);
 
                 var response = new Item
                 {
@@ -49,7 +59,11 @@ namespace Backend.Controllers
                     Content = request.Content,
                     IsVisible = request.IsVisible,
                     PublishedDate = request.PublishedDate,
-
+                    Categories = (ICollection<Category>)item.Categories.Select(x => new CategoryDTO
+                    {
+                        Id = x.Id,
+                        Name = x.Name,
+                    }).ToList()
                 };
 
                 return Ok(response);

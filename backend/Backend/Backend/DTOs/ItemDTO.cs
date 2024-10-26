@@ -14,5 +14,7 @@
         public Boolean IsVisible { get; set; }
 
         public string Status { get; set; }
+
+        public List<CategoryDTO> Categories { get; set; } = new List<CategoryDTO>();
     }
 }

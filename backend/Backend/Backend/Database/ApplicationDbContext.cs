@@ -13,7 +13,9 @@
 
             public DbSet<Item> Items { get; set; }
             public DbSet<Goal> Goals { get; set; }
-      
+
+            public DbSet<Category> Categories { get; set; }
+
         }
     }
 }
