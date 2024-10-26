@@ -13,7 +13,7 @@ namespace Backend.Repositories.Concrete
         }
         public async Task<Goal> CreateAsync(Goal goal)
         {
-            await dbContext. AddAsync(goal);
+            await dbContext.Goals.AddAsync(goal);
             await dbContext.SaveChangesAsync();
             return goal;
         }

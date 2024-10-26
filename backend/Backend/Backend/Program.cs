@@ -13,8 +13,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<IGoalRepository, GoalRepository>();
+builder.Services.AddScoped<IItemRepository, ItemRepository>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

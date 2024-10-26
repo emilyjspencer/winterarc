@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿namespace Backend.DTOs
 
-namespace Backend.DTOs
+
 {
-    public class CreateGoalRequestDTO : Controller
+    public class CreateGoalRequestDTO
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

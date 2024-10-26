@@ -2,7 +2,6 @@
 using Azure;
 using Backend.DTOs;
 using Backend.Models;
-using Backend.Repositories.Concrete;
 using Backend.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;
 
