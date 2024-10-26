@@ -1,28 +1,27 @@
-<h1>Item</h1>
+<h1>Goal</h1>
 
 <div>
-    <h1>Add Item</h1>
+    <h1>Add Goal</h1>
     <form #form="ngForm" (ngSubmit)="onFormSubmit()">
-      <div class="items">
+      <div class="goals">
         <div>
           <label for="name">Name</label>
           <input
-            [(ngModel)]="item.name"
+            [(ngModel)]="goal.name"
             type="text"
             name="name"
             id="name"
           />
         </div>
         <div>
-          <label for="caption"
-            >Caption</label
+          <label for="description"
+            >Description</label
           >
           <input
-            [(ngModel)]="item.caption"
+            [(ngModel)]="goal.description"
             type="text"
-            name="caption"
-            id="caption"
-            class="form-control"
+            name="description"
+            id="description"
           />
         </div>
   
@@ -34,7 +33,7 @@
                 name="content"
                 id="content"
                 style="height: 380px; max-height: 370px"
-                [(ngModel)]="item.content"
+                [(ngModel)]="goal.content"
               ></textarea>
             </div>
             <div style="max-height: 350px; overflow-y: scroll">
@@ -45,24 +44,22 @@
         <div>
           <label for="publishedDate">Published Date</label>
           <input
-            [(ngModel)]="item.publishedDate"
+            [(ngModel)]="goal.publishedDate"
             type="date"
             name="publishedDate"
             id="publishedDate"
-            class="form-control"
           />
         </div>
+        
         <div>
-          <input
-            [(ngModel)]="item.isVisible"
-            name="isVisible"
-            class=""
-            type="checkbox"
-            id="isVisible"
-          />
-          <label for="isVisible"> Is Visible? </label>
-        </div>
-  
+            <label for="status">Status note this will be a dropdown</label>
+            <input
+              [(ngModel)]="goal.status"
+              type="text"
+              name="status"
+              id="status"
+            />
+          </div>
        
   
         <div>
@@ -70,16 +67,6 @@
         </div>
       </div>
     </form>
-  </div>
-
-  <div>
-    <label for="status">Status this will be a dropdown</label>
-    <input
-      [(ngModel)]="item.status"
-      type="text"
-      name="status"
-      id="status"
-    />
   </div>
   
   <div>
@@ -91,3 +78,4 @@
     </button>
   
   </div>
+

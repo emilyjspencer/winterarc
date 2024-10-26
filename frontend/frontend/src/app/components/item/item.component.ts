@@ -23,6 +23,7 @@ export class ItemComponent {
       content: '',
       isVisible: true,
       publishedDate: new Date(),
+      status: ''
     }
 }
 
@@ -31,7 +32,7 @@ onFormSubmit(): void {
 
     this.itemService.createItem(this.item).subscribe({
       next: (response) => {
-        this.router.navigateByUrl('/admin/items');
+        this.router.navigateByUrl('/items');
       },
     });
   }

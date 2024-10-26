@@ -3,5 +3,6 @@ export interface AddItem {
     caption: string;
     content: string;
     publishedDate: Date;
-    isVisible: boolean
+    isVisible: boolean;
+    status: string;
 }
