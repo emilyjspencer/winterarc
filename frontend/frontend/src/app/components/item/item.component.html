@@ -1,1 +1,83 @@
 <h1>Item</h1>
+
+<div>
+    <h1>Add Item/Goal</h1>
+    <form #form="ngForm" (ngSubmit)="onFormSubmit()">
+      <div class="items">
+        <div>
+          <label for="name">Name</label>
+          <input
+            [(ngModel)]="item.name"
+            type="text"
+            name="name"
+            id="name"
+          />
+        </div>
+        <div>
+          <label for="caption"
+            >Caption</label
+          >
+          <input
+            [(ngModel)]="item.caption"
+            type="text"
+            name="caption"
+            id="caption"
+            class="form-control"
+          />
+        </div>
+  
+        <div>
+          <label for="content">Content</label>
+          <div>
+            <div>
+              <textarea
+                name="content"
+                id="content"
+                style="height: 380px; max-height: 370px"
+                [(ngModel)]="item.content"
+              ></textarea>
+            </div>
+            <div style="max-height: 350px; overflow-y: scroll">
+            </div>
+          </div>
+        </div>
+  
+        <div>
+          <label for="publishedDate">Published Date</label>
+          <input
+            [(ngModel)]="item.publishedDate"
+            type="date"
+            name="publishedDate"
+            id="publishedDate"
+            class="form-control"
+          />
+        </div>
+        <div>
+          <input
+            [(ngModel)]="item.isVisible"
+            name="isVisible"
+            class=""
+            type="checkbox"
+            id="isVisible"
+          />
+          <label for="isVisible"> Is Visible? </label>
+        </div>
+  
+       
+  
+        <div>
+          <button type="submit">Save</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <div>
+    <button
+      type="button"
+      style="position: fixed; top: 10px; right: 10px"
+    >
+      X
+    </button>
+  
+  </div>

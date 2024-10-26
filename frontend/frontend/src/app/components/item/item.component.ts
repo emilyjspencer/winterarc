@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 import { ItemService } from '../../services/item.service';
 import { AddItem } from '../../interfaces/Item';
 import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-item',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './item.component.html',
   styleUrl: './item.component.css'
 })
@@ -25,7 +26,15 @@ export class ItemComponent {
     }
 }
 
+onFormSubmit(): void {
+  console.log(this.item)
 
+    this.itemService.createItem(this.item).subscribe({
+      next: (response) => {
+        this.router.navigateByUrl('/admin/items');
+      },
+    });
+  }
 
  
 }
