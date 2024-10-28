@@ -1,0 +1,12 @@
+<h1>About SAD</h1>
+
+<ul class="info" *ngFor="let item of information">
+    <li>
+      <app-card
+        [title]="item.title"
+        [description]="item.description"
+        [image]="item.image"
+        [footer]="item.footer"
+      ></app-card>
+    </li>
+  </ul>
