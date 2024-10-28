@@ -1,44 +1,25 @@
-<nav>
+<nav class="background">
     <div>
-      <a [routerLink]="['/']">gdgdg</a>
+      <a [routerLink]="['/']">Home</a>
       <button
         type="button"
       >
-        <span></span>
       </button>
       <div>
         <ul>
-          <li class="nav-item">
-            <a
-              [routerLink]="['/home']"
-              class="nav-link active"
-              aria-curr
-              ent="page"
-              >Home</a
-            >
-          </li>
-  
           <li>
-            <a href="#" role="button" 
-            aria-expanded="false">Admin</a>
-              <ul
-              >
                 <li>
                   <a [routerLink]="['/items']"
                   >Items</a>
+                <hr>
                   <a [routerLink]="['/goals']"
-                  >Goals</a
-                >
+                  >Goals</a>
+                  <hr>
+                  <a [routerLink]="['/progress']"
+                  >Progress</a>
                 </li>
-               
-              
-              </ul>
-            </li>
-        
-        </ul>
-  
-       
-        
+           
+        </ul>  
       </div>
     </div>
   </nav>

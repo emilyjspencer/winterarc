@@ -1,0 +1,16 @@
+<div>
+    <h1>Add Category</h1>
+    <form #form="ngForm"(ngSubmit)="onFormSubmit()">
+        <div>
+            <div>
+                <label for="categoryName">Category Name</label>
+                <input type="text" id="categoryName" name="categoryName"
+                [(ngModel)]="model.name">
+            </div>
+            <div>
+                <button type="submit">Save</button>
+            </div>
+        </div>
+    </form>
+
+    </div>

@@ -61,7 +61,21 @@
             />
           </div>
        
-  
+          <div class="categories">
+            <label for="categories">Categories</label>
+            
+              <select
+                [(ngModel)]="goal.categories"
+                name="categories"
+                id="categories"
+                multiple
+              >
+                <option *ngFor="let category of categories$ | async" [value]="category.id">
+                  {{ category.name }}
+                </option>
+              </select>
+         
+          </div>
         <div>
           <button type="submit">Save</button>
         </div>

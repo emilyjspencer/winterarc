@@ -63,11 +63,6 @@
           <label for="isVisible"> Is Visible? </label>
         </div>
   
-       
-  
-        <div>
-          <button type="submit">Save</button>
-        </div>
       </div>
     </form>
   </div>
@@ -80,6 +75,26 @@
       name="status"
       id="status"
     />
+  </div>
+  <div class="categories">
+    <label for="categories">Categories</label>
+    <ng-container *ngIf="categories$ | async as categories">
+      <select
+        [(ngModel)]="item.categories"
+        name="categories"
+        id="categories"
+        multiple
+      >
+        <option *ngFor="let category of categories$ | async" [value]="category.id">
+          {{ category.name }}
+        </option>
+      </select>
+    </ng-container>
+  </div>
+
+  
+  <div>
+    <button type="submit">Save</button>
   </div>
   
   <div>
