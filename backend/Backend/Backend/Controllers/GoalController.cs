@@ -15,7 +15,7 @@ namespace Backend.Controllers
             private readonly IGoalRepository goalRepository;
         private readonly ICategoryRepository categoryRepository;
 
-        public GoalController(IGoalRepository goalRepository)
+        public GoalController(IGoalRepository goalRepository, ICategoryRepository categoryRepository)
             {
                 this.goalRepository = goalRepository;
                 this.categoryRepository = categoryRepository;;
@@ -32,7 +32,7 @@ namespace Backend.Controllers
                     Description = request.Description,
                     Content = request.Content,
                     PublishedDate = request.PublishedDate,
-                    Status = request.Status
+                    Status = request.Status,
                     Categories = new List<Category>()
                 };
 
@@ -44,18 +44,18 @@ namespace Backend.Controllers
                     goal.Categories.Add(existingCategory);
                 }
             }
-            goal = await goalRepository.CreateAsync(goal);
+              goal = await goalRepository.CreateAsync(goal);
 
-            var response = new Goal
-            {
-                Id = goal.Id,
-                Name = request.Name,
-                Description = request.Description,
-                Content = request.Content,
-                PublishedDate = request.PublishedDate,
-                Status = request.Status,
-                Categories = (ICollection<Category>)goal.Categories.Select(x => new CategoryDTO
+              var response = new GoalDTO
                 {
+                  Id = goal.Id,
+                  Name = request.Name,
+                  Description = request.Description,
+                  Content = request.Content,
+                  PublishedDate = request.PublishedDate,
+                  Status = request.Status,
+                  Categories = goal.Categories.Select(x => new CategoryDTO
+                  {
                     Id = x.Id,
                     Name = x.Name,
                 }).ToList()

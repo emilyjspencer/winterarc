@@ -8,6 +8,8 @@ namespace Backend.Models
 
         public string Name { get; set; }
 
-    
+        public ICollection<Item> Items { get; set; }
+
+        public ICollection<Goal> Goals { get; set; }
     }
 }

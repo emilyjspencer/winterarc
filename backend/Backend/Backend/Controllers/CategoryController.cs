@@ -44,5 +44,25 @@ namespace Backend.Controllers
             }
 
 
+        [HttpGet]
+        public async Task<IActionResult> GetAllCategories()
+        {
+            var categories = await categoryRepository.GetAllAsync();
+            
+            var response = new List<CategoryDTO>();
+            
+            foreach (var category in categories)
+            {
+                response.Add(new CategoryDTO
+                {
+                    Id = category.Id,
+                    Name = category.Name
+                });
+            }
+            return Ok(response);
         }
+
+
+
     }
+}

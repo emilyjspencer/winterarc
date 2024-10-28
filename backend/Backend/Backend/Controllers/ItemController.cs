@@ -51,15 +51,16 @@ namespace Backend.Controllers
             }
             item = await itemRepository.CreateAsync(item);
 
-                var response = new Item
+                var response = new ItemDTO
                 {
                     Id = item.Id,
                     Name = request.Name,
                     Caption = request.Caption,
                     Content = request.Content,
                     IsVisible = request.IsVisible,
+                    Status = request.Status,
                     PublishedDate = request.PublishedDate,
-                    Categories = (ICollection<Category>)item.Categories.Select(x => new CategoryDTO
+                    Categories = item.Categories.Select(x => new CategoryDTO
                     {
                         Id = x.Id,
                         Name = x.Name,

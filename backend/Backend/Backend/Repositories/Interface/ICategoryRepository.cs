@@ -6,6 +6,9 @@ namespace Backend.Repositories.Interface
     {
         Task<Category> CreateAsync(Category category);
 
-        Task<Category?> GetById(Guid id);
+        Task<Category> GetById(Guid id);
+
+
+        Task<IEnumerable<Category>> GetAllAsync();
     }
 }
