@@ -1,6 +1,7 @@
 ﻿using Backend.Database.CodePulse.API.Data;
 using Backend.Models;
 using Backend.Repositories.Interface;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Repositories.Concrete
 {
@@ -16,6 +17,12 @@ namespace Backend.Repositories.Concrete
             await dbContext.Goals.AddAsync(goal);
             await dbContext.SaveChangesAsync();
             return goal;
+        }
+
+        public async Task<IEnumerable<Goal>> GetAllAsync()
+        {
+
+            return await dbContext.Goals.Include(x => x.Categories).ToListAsync();
         }
     }
 }
