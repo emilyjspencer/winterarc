@@ -22,7 +22,7 @@ goals
 * NUnit
 * .NET
 * Angular
-* SCSS
+* Tailwind
 * RxJS
 * Jest
 * Chart.Js or ngx-charts - to visualize data
@@ -52,4 +52,10 @@ Many to Many
 
 A category can be associated with many goals and many items
 a goal or item could be tagged with multiple categories e.g. fitness and mental health assigned to one goal
+
+
+
+# Notes
+
+Interfaces should start with an 'I'
 
