@@ -1,0 +1,30 @@
+<div>
+    <h1>itemsss</h1>
+  
+    <div>
+      <a [routerLink]="['/items/add']">Add item</a>
+    </div>
+    <ng-container *ngIf="items$ | async">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Content</th>
+            <th>Is Visible?</th>
+            <th>Categories</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items$ | async">
+            <td>{{ item.name }}</td>
+            <td>{{ item.content }}</td>
+            <td>{{ item.isVisible }}</td>
+            <span *ngFor="let category of item.categories">
+              <span> {{ category.name }} </span>
+            </span>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  </div>

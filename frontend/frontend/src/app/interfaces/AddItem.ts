@@ -1,7 +1,6 @@
-import { Category} from '../interfaces/Category';
+import { Category } from '../../app/interfaces/Category';
 
-export interface Item {
-    id: string;
+export interface AddItem {
     name: string;
     caption: string;
     content: string;

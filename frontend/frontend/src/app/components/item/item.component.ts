@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemService } from '../../services/item.service';
-import { AddItem } from '../../interfaces/Item';
+import { AddItem } from '../../interfaces/AddItem';
+import { Item } from '../../interfaces/Item';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, NgFor, AsyncPipe } from '@angular/common';
