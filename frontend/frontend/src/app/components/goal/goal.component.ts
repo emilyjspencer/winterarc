@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AddGoal } from '../../interfaces/Goal';
+import { AddGoal } from '../../interfaces/AddGoal';
 import { GoalService } from '../../services/goal.service';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';

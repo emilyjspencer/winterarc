@@ -1,7 +1,6 @@
-import { Category } from "./Category";
+import { Category} from './Category';
 
-export interface Goal {
-    id: string;
+export interface AddGoal {
     name: string;
     description: string;
     content: string;

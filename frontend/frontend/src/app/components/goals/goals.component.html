@@ -1,0 +1,29 @@
+<div>
+    <h1>goals</h1>
+    <div>
+      <a [routerLink]="['/goals/add']">Add goal</a>
+    </div>
+    <ng-container *ngIf="goals$ | async">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Content</th>
+            <th>Status</th>
+            <th>Categories</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let goal of goals$ | async">
+            <td>{{ goal.name }}</td>
+            <td>{{ goal.content }}</td>
+            <td>{{ goal.status }}</td>
+            <span *ngFor="let category of goal.categories">
+              <span> {{ category.name }} </span>
+            </span>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+  </div>
