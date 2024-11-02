@@ -29,6 +29,7 @@ goals
 * AWS?
 * Docker
 * Cypress
+* Specflow
 
 Future iterations might utilization authentication and microservices.
 
@@ -59,4 +60,6 @@ a goal or item could be tagged with multiple categories e.g. fitness and mental 
 
 * Interfaces should start with an 'I'
 * Put goals items onto cards
-
+* Put items onto cards
+* Put sad info into accordions
+* Implement report generation
