@@ -101,8 +101,32 @@ namespace Backend.Controllers
             return Ok(response);
 
         }
+    
+
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteItem([FromRoute] Guid id)
+    {
+        var deletedItem = await itemRepository.DeleteAsync(id);
+
+        if (deletedItem == null)
+            return NotFound();
+
+        var response = new Item
+        {
+            Id = deletedItem.Id,
+            Name = deletedItem.Name,
+            Caption = deletedItem.Caption,
+            Content = deletedItem.Content,
+            IsVisible = deletedItem.IsVisible,
+            Status = deletedItem.Status,
+            PublishedDate = deletedItem.PublishedDate,
+        };
+
+        return Ok(response);
     }
 
+}
 
 
 }

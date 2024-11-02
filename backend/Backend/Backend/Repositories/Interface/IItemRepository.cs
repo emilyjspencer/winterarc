@@ -11,5 +11,7 @@ namespace Backend.Repositories.Interface
         Task<Item> CreateAsync(Item item);
 
         Task<IEnumerable<Item>> GetAllAsync();
+
+        Task<Item> DeleteAsync(Guid id);
     }
 }

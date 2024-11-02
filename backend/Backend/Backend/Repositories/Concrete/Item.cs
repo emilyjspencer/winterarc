@@ -28,6 +28,21 @@ namespace Backend.Repositories.Concrete
             return await dbContext.Items.Include(x => x.Categories).ToListAsync();
         }
 
+        public async Task<Item> DeleteAsync(Guid id)
+        {
+            var existingItem = await dbContext.Items.FirstOrDefaultAsync(p => p.Id == id);
 
+            if (existingItem != null)
+            {
+                dbContext.Remove(existingItem);
+                await dbContext.SaveChangesAsync();
+                return existingItem;
+            }
+
+            return null;
+        }
     }
+
+
 }
+
