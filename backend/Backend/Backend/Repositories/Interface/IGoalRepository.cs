@@ -7,5 +7,7 @@ namespace Backend.Repositories.Interface
         Task<Goal> CreateAsync(Goal goal);
 
         Task<IEnumerable<Goal>> GetAllAsync();
+
+        Task<Goal> DeleteAsync(Guid id);
     }
 }

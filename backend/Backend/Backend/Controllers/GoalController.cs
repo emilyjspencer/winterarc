@@ -93,9 +93,29 @@ namespace Backend.Controllers
             return Ok(response);
 
         }
-    }
 
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteGoal([FromRoute] Guid id)
+        {
+            var deletedGoal = await goalRepository.DeleteAsync(id);
+
+            if (deletedGoal == null)
+                return NotFound();
+
+            var response = new Goal
+            {
+                Id = deletedGoal.Id,
+                Name = deletedGoal.Name,
+                Content = deletedGoal.Content,
+                Status = deletedGoal.Status,
+                PublishedDate = deletedGoal.PublishedDate,
+            };
+
+            return Ok(response);
+        }
+
+    }
 }
 
 
-    

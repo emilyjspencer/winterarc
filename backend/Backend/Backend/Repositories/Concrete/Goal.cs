@@ -24,5 +24,20 @@ namespace Backend.Repositories.Concrete
 
             return await dbContext.Goals.Include(x => x.Categories).ToListAsync();
         }
+
+        public async Task<Goal> DeleteAsync(Guid id)
+        {
+            var existingGoal = await dbContext.Goals.FirstOrDefaultAsync(p => p.Id == id);
+
+            if (existingGoal != null)
+            {
+                dbContext.Remove(existingGoal);
+                await dbContext.SaveChangesAsync();
+                return existingGoal;
+            }
+
+            return null;
+        }
     }
 }
+
