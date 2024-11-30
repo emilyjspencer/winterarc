@@ -1,6 +1,6 @@
-import { Category} from '../interfaces/Category';
+import { ICategory} from '../interfaces/Category';
 
-export interface Item {
+export interface IItem {
     id: string;
     name: string;
     caption: string;
@@ -8,5 +8,5 @@ export interface Item {
     publishedDate: Date;
     isVisible: boolean;
     status: string;
-    categories: Category[]
+    categories: ICategory[]
 }

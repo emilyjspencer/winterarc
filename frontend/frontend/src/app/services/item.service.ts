@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Item } from '../interfaces/Item';
+import { IItem } from '../interfaces/Item';
 import { Observable } from 'rxjs';
 import { ItemComponent } from '../components/item/item.component';
-import { AddItem } from '../interfaces/AddItem';
+import { IAddItem } from '../interfaces/AddItem';
+import { IUpdateItem } from '../interfaces/IUpdateItem';
 
 
 @Injectable({
@@ -15,11 +16,30 @@ export class ItemService {
 
   apiBaseUrl: string = "https://localhost:7078";
 
-  createItem(data: AddItem): Observable<ItemComponent> {
+  createItem(data: IAddItem): Observable<ItemComponent> {
     return this.http.post<ItemComponent>(this.apiBaseUrl + '/api/Item', data)
   }
 
-  getAllItems(): Observable<Item[]> {
-    return this.http.get<Item[]>(this.apiBaseUrl + '/api/Item')
+  getAllItems(): Observable<IItem[]> {
+    return this.http.get<IItem[]>(this.apiBaseUrl + '/api/Item')
+  }
+
+  deleteItem(id: string): Observable<IItem> {
+    return this.http.delete<IItem>(this.apiBaseUrl + '/api/Item/' + id);
+  }
+
+  getItem(id: string): Observable<IItem> {
+    return this.http.get<IItem>(this.apiBaseUrl + '/api/blogposts/GetBlogPostById/' + id)
+  }
+
+  
+  updateItem(
+    id: string,
+    updatedItem: IUpdateItem
+  ): Observable<IItem> {
+    return this.http.put<IItem>(
+     this.apiBaseUrl + '/api/Item/' + id,
+      updatedItem
+    );
   }
 }

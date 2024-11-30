@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AddGoal } from '../../interfaces/AddGoal';
+import { IAddGoal } from '../../interfaces/AddGoal';
 import { GoalService } from '../../services/goal.service';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Category } from '../../interfaces/Category';
+import { ICategory } from '../../interfaces/Category';
 import { CategoryService } from '../../services/category.service';
 import { CommonModule, NgFor } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,9 +18,9 @@ import { BrowserModule } from '@angular/platform-browser';
 })
 export class GoalComponent implements OnInit {
 
-    goal: AddGoal
+    goal: IAddGoal
 
-    categories$?: Observable<Category[]> | undefined
+    categories$?: Observable<ICategory[]> | undefined
   
     constructor(private goalService: GoalService, private router: Router, private categoryService: CategoryService) {
       this.goal = {
@@ -33,7 +33,7 @@ export class GoalComponent implements OnInit {
       }
   }
   
-  onFormSubmit(): void {
+  SendData(): void {
     console.log(this.goal)
   
       this.goalService.createGoal(this.goal).subscribe({

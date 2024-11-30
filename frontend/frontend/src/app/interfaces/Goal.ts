@@ -1,11 +1,11 @@
-import { Category } from "./Category";
+import { ICategory } from "./Category";
 
-export interface Goal {
+export interface IGoal {
     id: string;
     name: string;
     description: string;
     content: string;
     publishedDate: Date;
     status: string;
-    categories: Category[]
+    categories: ICategory[]
 }

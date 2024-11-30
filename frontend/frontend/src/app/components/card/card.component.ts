@@ -10,9 +10,10 @@ import { Component, Input } from '@angular/core';
 })
 export class CardComponent {
 
-  @Input() title?: string = '';
+  @Input() name?: string = '';
   @Input() description = '';
   @Input() image = '';
-  @Input() footer?: string = '';
+  @Input() content?: string = '';
+  @Input() status?: string = '';
   
 }

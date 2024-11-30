@@ -1,11 +1,12 @@
-import { ICategory } from '../../app/interfaces/Category';
+import { ICategory} from '../interfaces/Category';
 
-export interface IAddItem {
+export interface IUpdateItem {
     name: string;
     caption: string;
     content: string;
     publishedDate: Date;
     isVisible: boolean;
     status: string;
-    categories: ICategory[]
+    categories: string[]
 }
+

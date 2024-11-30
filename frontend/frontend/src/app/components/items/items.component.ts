@@ -4,7 +4,7 @@ import { ItemComponent } from '../item/item.component';
 import { ItemService } from '../../services/item.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Item } from '../../interfaces/Item';
+import { IItem } from '../../interfaces/Item';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -16,7 +16,7 @@ import { RouterModule } from '@angular/router';
 })
 export class ItemsComponent implements OnInit {
 
-  items$?: Observable<Item[]>;
+  items$?: Observable<IItem[]>;
 
   constructor(private itemService: ItemService) {}
 

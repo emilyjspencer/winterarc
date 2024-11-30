@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AddGoal } from '../interfaces/AddGoal';
+import { IAddGoal } from '../interfaces/AddGoal';
 import { GoalComponent } from '../components/goal/goal.component';
-import { Goal } from '../interfaces/Goal';
+import { IGoal } from '../interfaces/Goal';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +14,12 @@ export class GoalService {
 
   apiBaseUrl: string = "https://localhost:7078";
 
-  createGoal(data: AddGoal): Observable<GoalComponent> {
+  createGoal(data: IAddGoal): Observable<GoalComponent> {
     return this.http.post<GoalComponent>('https://localhost:7078/api/Goal', data)
   }
 
-  getAllGoals(): Observable<Goal[]> {
-    return this.http.get<Goal[]>(this.apiBaseUrl + '/api/Goal')
+  getAllGoals(): Observable<IGoal[]> {
+    return this.http.get<IGoal[]>(this.apiBaseUrl + '/api/Goal')
   }
-  
+
 }

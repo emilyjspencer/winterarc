@@ -1,3 +1,3 @@
-export interface NewCategory {
+export interface INewCategory {
     name: string;
 }

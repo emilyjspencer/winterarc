@@ -4,6 +4,11 @@
       <a [routerLink]="['/goals/add']">Add goal</a>
     </div>
     <ng-container *ngIf="goals$ | async">
+        <app-card>
+            [name]="goal.name"
+            [content]="goal.content"
+            [status]="goal.status"
+        </app-card>
       <table>
         <thead>
           <tr>
