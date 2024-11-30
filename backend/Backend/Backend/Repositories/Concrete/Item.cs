@@ -6,25 +6,25 @@ using Microsoft.EntityFrameworkCore;
 namespace Backend.Repositories.Concrete
 {
 
-   
+
     public class ItemRepository : IItemRepository
+    {
+        private readonly ApplicationDbContext dbContext;
+        public ItemRepository(ApplicationDbContext dbContext)
         {
-            private readonly ApplicationDbContext dbContext;
-            public ItemRepository(ApplicationDbContext dbContext)
-            {
-                this.dbContext = dbContext;
-            }
-            public async Task<Item> CreateAsync(Item item)
-            {
-                await dbContext.Items.AddAsync(item);
-                await dbContext.SaveChangesAsync();
-                return item;
-            }
+            this.dbContext = dbContext;
+        }
+        public async Task<Item> CreateAsync(Item item)
+        {
+            await dbContext.Items.AddAsync(item);
+            await dbContext.SaveChangesAsync();
+            return item;
+        }
 
 
         public async Task<IEnumerable<Item>> GetAllAsync()
         {
-       
+
             return await dbContext.Items.Include(x => x.Categories).ToListAsync();
         }
 
@@ -41,8 +41,26 @@ namespace Backend.Repositories.Concrete
 
             return null;
         }
+
+
+        public async Task<Item> UpdateAsync(Item item)
+        {
+            var existingItem = await dbContext.Items.Include(p => p.Categories).FirstOrDefaultAsync(x => x.Id == item.Id);
+
+            if (existingItem == null)
+            {
+                return null;
+            }
+
+            dbContext.Entry(existingItem).CurrentValues.SetValues(item);
+            existingItem.Categories = item.Categories;
+
+            await dbContext.SaveChangesAsync();
+
+            return item;
+        }
+
+
     }
-
-
 }
 

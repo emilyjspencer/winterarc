@@ -126,7 +126,53 @@ namespace Backend.Controllers
         return Ok(response);
     }
 
-}
+        [HttpPut("{id}")]
+
+        public async Task<IActionResult> UpdateItem([FromRoute] Guid id, UpdateItemRequestDTO request)
+        {
+            var item = new Item
+            {
+                Id = id,
+                Name = request.Name,
+                Content = request.Content,
+                IsVisible = request.IsVisible,
+                PublishedDate = request.PublishedDate,
+                Categories = new List<Category>()
+            };
+
+            foreach (var categoryGuid in request.Categories)
+            {
+                var existingCategory = await categoryRepository.GetById(categoryGuid);
+
+                if (existingCategory != null)
+                {
+                    item.Categories.Add(existingCategory);
+                }
+            }
+
+            var updatedItem = await itemRepository.UpdateAsync(item);
+
+            if (updatedItem == null)
+                return NotFound();
+
+            var response = new ItemDTO
+            {
+                Id = item.Id,
+                Name = request.Name,
+                Content = request.Content,
+                IsVisible = request.IsVisible,
+                PublishedDate = request.PublishedDate,
+                Categories = item.Categories.Select(p => new CategoryDTO
+                {
+                    Id = p.Id,
+                    Name = p.Name
+                }).ToList()
+            };
+
+            return Ok(response);
+        }
+
+    }
 
 
 }

@@ -13,5 +13,7 @@ namespace Backend.Repositories.Interface
         Task<IEnumerable<Item>> GetAllAsync();
 
         Task<Item> DeleteAsync(Guid id);
+
+        Task<Item> UpdateAsync(Item item);
     }
 }
